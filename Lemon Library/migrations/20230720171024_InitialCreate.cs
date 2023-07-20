@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Lemon_Library.Migrations
+namespace Lemon_Library.migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -31,9 +31,8 @@ namespace Lemon_Library.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Rating = table.Column<double>(type: "float", nullable: false),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     available = table.Column<bool>(type: "bit", nullable: false)
