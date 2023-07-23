@@ -1,6 +1,8 @@
-﻿using Lemon_Library.Data;
-using Lemon_Library.DTOs;
-using Lemon_Library.Entities;
+﻿using Application.Interfaces;
+using Application.Services;
+using Database.Data;
+using Business.DTOs;
+using Database.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +11,12 @@ namespace Lemon_Library.Controllers;
 public class BooksController : BaseApiController
 {
     private readonly LibraryContext _context;
+    private readonly IBooksService _booksService;
 
-    public BooksController(LibraryContext context)
+    public BooksController(LibraryContext context, IBooksService booksService)
     {
         _context = context;
+        _booksService = booksService;
     }
     
     //TODO: წიგნების სრული სიის წამოღება
@@ -24,38 +28,19 @@ public class BooksController : BaseApiController
     {
         try
         {
-            var books = await _context.Books
-                .Include(b => b.BookAuthors)
-                .ThenInclude(ba => ba.Author)
-                .ToListAsync();
-
-            // Map the entity objects to DTO objects
-            var bookDTOs = books.Select(book => new BookDTO
-            {
-                Id = book.Id,
-                Title = book.Title,
-                Description = book.Description,
-                Rating = book.Rating,
-                DateAdded = book.DateAdded,
-                Available = book.available,
-
-                // Populate the Authors collection for each book
-                Authors = book.BookAuthors.Select(ba => new AuthorDTO
-                {
-                    Id = ba.Author.Id,
-                    FirstName = ba.Author.FirstName,
-                    LastName = ba.Author.LastName,
-                    BirthDate = ba.Author.BirthDate,
-                    // Optionally, you can include other author properties if needed
-                }).ToList()
-            }).ToList();
+            var bookDTOs = await _booksService.GetBooks();
 
             return Ok(bookDTOs);
+        }
+        catch (InvalidOperationException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
         }
         catch (Exception ex)
         {
             return StatusCode(500, $"An error occurred: {ex.Message}");
         }
+        
     }
     
     
@@ -67,40 +52,12 @@ public class BooksController : BaseApiController
     {
         try
         {
-            // Fetch the specific book with the chosen ID from the database
-            var book = await _context.Books
-                .Where(b => b.Id == id)
-                .Include(b => b.BookAuthors)
-                .ThenInclude(ba => ba.Author)
-                .SingleOrDefaultAsync();
-
-            if (book == null)
-            {
-                return NotFound(); // Return 404 Not Found if the book with the chosen ID is not found
-            }
-
-            // Map the entity object to a DTO object
-            var bookDTO = new BookDTO
-            {
-                Id = book.Id,
-                Title = book.Title,
-                Description = book.Description,
-                Rating = book.Rating,
-                DateAdded = book.DateAdded,
-                Available = book.available,
-
-                // Populate the Authors collection for the chosen book
-                Authors = book.BookAuthors.Select(ba => new AuthorDTO
-                {
-                    Id = ba.Author.Id,
-                    FirstName = ba.Author.FirstName,
-                    LastName = ba.Author.LastName,
-                    BirthDate = ba.Author.BirthDate,
-                    // Optionally, you can include other author properties if needed
-                }).ToList()
-            };
-
-            return Ok(bookDTO); // Return the specific book with its corresponding authors
+            var BookDTO= await _booksService.GetBookById(id);
+            return Ok(BookDTO);
+        }
+        catch (ArgumentNullException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
         }
         catch (Exception ex)
         {
@@ -115,64 +72,85 @@ public class BooksController : BaseApiController
     
     // POST: api/books
         [HttpPost("add")]
-        public async Task<IActionResult> AddBookWithAuthor(BookAuthorDTO bookAuthorDTO)
+        public async Task<IActionResult> AddBookWithAuthor([FromBody] BookAuthorDTO bookAuthorDTO)
         {
-            if (ModelState.IsValid)
+            try
             {
-                // Check if the provided Author exists in the database (case-insensitive)
-                Author existingAuthor = await _context.Authors.FirstOrDefaultAsync(a =>
-                    a.FirstName.ToLower() == bookAuthorDTO.FirstName.ToLower() &&
-                    a.LastName.ToLower() == bookAuthorDTO.LastName.ToLower());
+                await _booksService.AddBookWithAuthor(bookAuthorDTO);
 
-                // Check if a book with the same title exists in the database (case-insensitive)
-                bool titleExists = await _context.Books.AnyAsync(b =>
-                    b.Title.ToLower() == bookAuthorDTO.Title.ToLower());
-
-                if (titleExists)
-                {
-                    return BadRequest("A book with the same title already exists.");
-                }
-
-                if (existingAuthor == null)
-                {
-                    // Create a new author
-                    existingAuthor = new Author
-                    {
-                        FirstName = bookAuthorDTO.FirstName,
-                        LastName = bookAuthorDTO.LastName,
-                        BirthDate = bookAuthorDTO.BirthDate
-                    };
-                }
-
-                // Create a new book
-                var book = new Book
-                {
-                    Title = bookAuthorDTO.Title,
-                    Description = bookAuthorDTO.Description,
-                    Rating = bookAuthorDTO.Rating,
-                    DateAdded = bookAuthorDTO.DateAdded,
-                    available = bookAuthorDTO.Available
-                };
-
-                // Associate the book with the author
-                book.BookAuthors = new[]
-                {
-                    new BookAuthor { Author = existingAuthor }
-                };
-
-                _context.Books.Add(book);
-                await _context.SaveChangesAsync();
-                return Ok("Book added successfully.");
+                return Ok("Book added successfully");
             }
-
+            catch (ArgumentException e)
+            {
+                return BadRequest($"An error occurred: {e.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
             return BadRequest("Invalid book data.");
         }
         
         
     //TODO: წიგნის რედაქტირება
     
-    //TODO: გატანა დაბრუნება
+    [HttpPut("edit")]
+    public async Task<IActionResult> UpdateBook([FromBody] EditBookDTO updatedBook)
+    {
+        try
+        {
+            await _booksService.EditBook(updatedBook);
+
+            return Ok("Book edited successfully");
+        }   
+        catch (ArgumentException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"An error occurred: {ex.Message}");
+        }
+    }
     
+    //TODO: გატანა დაბრუნება
+    [HttpPut("{bookId}/toggle-status")]
+    public async Task<IActionResult> ToggleBookStatus(int bookId)
+    {
+        try
+        {
+            await _booksService.ToggleBookStatus(bookId);
+            return Ok("Book availability status toggled successfully.");
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"An error occurred: {ex.Message}");
+        }
+    }
+    
+    
+    //TODO: წაშლა
+    [HttpDelete("{bookId}")]
+    public async Task<IActionResult> DeleteBookById(int bookId)
+    {
+        try
+        {
+            await _booksService.DeleteBookById(bookId);
+            return Ok("Book was deleted successfully");
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"An error occurred: {ex.Message}");
+        }
+    }
     
     
 }

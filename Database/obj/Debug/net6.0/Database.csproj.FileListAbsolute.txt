@@ -1,0 +1,17 @@
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.AssemblyReference.cache
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.AssemblyInfoInputs.cache
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.AssemblyInfo.cs
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.CoreCompileInputs.cache
+D:\LemonDo\LemonLibrary\Database\bin\Debug\net6.0\Database.deps.json
+D:\LemonDo\LemonLibrary\Database\bin\Debug\net6.0\Database.runtimeconfig.json
+D:\LemonDo\LemonLibrary\Database\bin\Debug\net6.0\Database.dll
+D:\LemonDo\LemonLibrary\Database\bin\Debug\net6.0\Database.pdb
+D:\LemonDo\LemonLibrary\Database\bin\Debug\net6.0\Business.dll
+D:\LemonDo\LemonLibrary\Database\bin\Debug\net6.0\Business.pdb
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.CopyComplete
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.dll
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\refint\Database.dll
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.pdb
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\Database.genruntimeconfig.cache
+D:\LemonDo\LemonLibrary\Database\obj\Debug\net6.0\ref\Database.dll

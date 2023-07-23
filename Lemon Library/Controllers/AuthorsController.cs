@@ -1,6 +1,7 @@
-﻿using Lemon_Library.Data;
-using Lemon_Library.DTOs;
-using Lemon_Library.Entities;
+﻿using Application.Interfaces;
+using Database.Data;
+using Business.DTOs;
+using Database.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +10,12 @@ namespace Lemon_Library.Controllers;
 public class AuthorsController : BaseApiController
 {
     private readonly LibraryContext _context;
+    private readonly IAuthorService _authorService;
 
-    public AuthorsController(LibraryContext context)
+    public AuthorsController(LibraryContext context, IAuthorService authorService)
     {
         _context = context;
+        _authorService = authorService;
     }
     //TODO: ავტორების სრული სიის წამოღება
     
@@ -22,52 +25,9 @@ public class AuthorsController : BaseApiController
     {
         try
         {
-            var books = await _context.Books
-                .Include(b => b.BookAuthors)
-                .ThenInclude(ba => ba.Author)
-                .ToListAsync();
+            await _authorService.GetAuthors();
 
-            // Create a dictionary to store books grouped by their authors
-            var authorBooksMap = new Dictionary<Author, List<Book>>();
-
-            foreach (var book in books)
-            {
-                foreach (var bookAuthor in book.BookAuthors)
-                {
-                    // Check if the author already exists in the dictionary
-                    if (!authorBooksMap.ContainsKey(bookAuthor.Author))
-                    {
-                        authorBooksMap[bookAuthor.Author] = new List<Book>();
-                    }
-
-                    // Add the current book to the author's list of books
-                    authorBooksMap[bookAuthor.Author].Add(book);
-                }
-            }
-
-            // Create a list of AuthorDTO objects with their corresponding books
-            var authorDTOs = authorBooksMap.Select(kv => new AuthorDTO
-            {
-                Id = kv.Key.Id,
-                FirstName = kv.Key.FirstName,
-                LastName = kv.Key.LastName,
-                BirthDate = kv.Key.BirthDate,
-                // Optionally, you can include other author properties if needed
-
-                // Map the books of each author to BookDTO objects
-                Books = kv.Value.Select(book => new BookDTO
-                {
-                    Id = book.Id,
-                    Title = book.Title,
-                    Description = book.Description,
-                    Rating = book.Rating,
-                    DateAdded = book.DateAdded,
-                    Available = book.available,
-                    // Optionally, you can include other book properties if needed
-                }).ToList()
-            }).ToList();
-
-            return Ok(authorDTOs);
+            return Ok();
         }
         catch (Exception ex)
         {
@@ -84,44 +44,13 @@ public class AuthorsController : BaseApiController
     {
         try
         {
-            // Fetch the specific author with the chosen ID from the database
-            var author = await _context.Authors
-                .Where(a => a.Id == id)
-                .Include(a => a.BookAuthors)
-                .ThenInclude(ba => ba.Book)
-                .SingleOrDefaultAsync();
+            var authorDtos = _authorService.GetAuthorById(id);
 
-            if (author == null)
-            {
-                return NotFound(); // Return 404 Not Found if the author with the chosen ID is not found
-            }
-
-            // Create a list of BookDTO objects for the author's books
-            var booksDTO = author.BookAuthors.Select(ba => new BookDTO
-            {
-                Id = ba.Book.Id,
-                Title = ba.Book.Title,
-                Description = ba.Book.Description,
-                Rating = ba.Book.Rating,
-                DateAdded = ba.Book.DateAdded,
-                Available = ba.Book.available,
-                // Optionally, you can include other book properties if needed
-            }).ToList();
-
-            // Create an AuthorDTO object for the specific author
-            var authorDTO = new AuthorDTO
-            {
-                Id = author.Id,
-                FirstName = author.FirstName,
-                LastName = author.LastName,
-                BirthDate = author.BirthDate,
-                // Optionally, you can include other author properties if needed
-
-                // Populate the Books collection for the chosen author
-                Books = booksDTO
-            };
-
-            return Ok(authorDTO); // Return the specific author with their corresponding books
+            return Ok(authorDtos);
+        }
+        catch (ArgumentException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
         }
         catch (Exception ex)
         {
@@ -130,12 +59,67 @@ public class AuthorsController : BaseApiController
     }
     
     
-    
-    
-    
     //TODO: ავტორის დამატება
-    
+    [HttpPost("add")]
+    public async Task<IActionResult> AddAuthor([FromBody] AddAuthorDTO addAuthorDto)
+    {
+        try
+        {
+            await _authorService.AddAuthor(addAuthorDto);
+
+            return Ok("Author was added successfully");
+        }
+        catch (ArgumentException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+
     //TODO: ავტორის რედაქტირება
+    [HttpPut("edit")]
+    public async Task<IActionResult> UpdateAuthor([FromBody] EditAuthorDTO updatedAuthor)
+    {
+        try
+        {
+            await _authorService.EditAuthor(updatedAuthor);
+            return Ok("Author was updated successfully");
+        }
+        catch (ArgumentException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+    }
     
-    
+    //TODO: ავტორის წაშლა
+    [HttpDelete("{authorId}")]
+    public async Task<IActionResult> DeleteBookById(int authorId)
+    {
+        try
+        {
+            await _authorService.DeleteAuthorById(authorId);
+            return Ok("Author was deleted successfully");
+        }
+        catch (ArgumentException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 }

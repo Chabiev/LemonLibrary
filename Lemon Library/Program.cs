@@ -1,4 +1,7 @@
-using Lemon_Library.Data;
+using Application.Interfaces;
+using Application.Services;
+using Database.Data;
+using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +19,11 @@ builder.Services.AddDbContext<LibraryContext>(config =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+//DI
+builder.Services.AddScoped<IBooksService, BooksService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 var app = builder.Build();
 
