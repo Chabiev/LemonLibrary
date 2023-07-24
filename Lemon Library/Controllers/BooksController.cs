@@ -72,11 +72,11 @@ public class BooksController : BaseApiController
     
     // POST: api/books
         [HttpPost("add")]
-        public async Task<IActionResult> AddBookWithAuthor([FromBody] BookAuthorDTO bookAuthorDTO)
+        public async Task<IActionResult> AddBookWithAuthor([FromForm] BookAuthorDTO bookAuthorDTO, IFormFile imageFile)
         {
             try
             {
-                await _booksService.AddBookWithAuthor(bookAuthorDTO);
+                await _booksService.AddBookWithAuthor(bookAuthorDTO, imageFile);
 
                 return Ok("Book added successfully");
             }
