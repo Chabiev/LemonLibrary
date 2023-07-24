@@ -95,7 +95,7 @@ public class BooksController : BaseApiController
     //TODO: წიგნის რედაქტირება
     
     [HttpPut("edit")]
-    public async Task<IActionResult> UpdateBook([FromBody] EditBookDTO updatedBook)
+    public async Task<IActionResult> UpdateBook([FromForm] EditBookDTO updatedBook)
     {
         try
         {

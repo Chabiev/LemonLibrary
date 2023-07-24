@@ -25,9 +25,9 @@ public class AuthorsController : BaseApiController
     {
         try
         {
-            await _authorService.GetAuthors();
+            var authorDtos = await _authorService.GetAuthors();
 
-            return Ok();
+            return Ok(authorDtos);
         }
         catch (Exception ex)
         {
@@ -44,7 +44,7 @@ public class AuthorsController : BaseApiController
     {
         try
         {
-            var authorDtos = _authorService.GetAuthorById(id);
+            var authorDtos = await _authorService.GetAuthorById(id);
 
             return Ok(authorDtos);
         }

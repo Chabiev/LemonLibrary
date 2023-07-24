@@ -87,61 +87,7 @@ public class BooksService : IBooksService
 
     public async Task EditBook(EditBookDTO editBookDTO)
     {
-        var book = await _context.Books
-            .Where(b => b.Id == editBookDTO.BookId)
-            .Include(b => b.BookAuthors)
-            .ThenInclude(ba => ba.Author)
-            .SingleOrDefaultAsync();
-
-        if (book == null)
-        {
-            throw new ArgumentException("No book with the given ID was found.");
-        }
-
-        if (editBookDTO.AuthorId.HasValue)
-        {
-            var existingAuthor = await _context.Authors.FindAsync(editBookDTO.AuthorId.Value);
-
-            if (existingAuthor == null)
-            {
-                throw new ArgumentException("The specified author does not exist.");
-            }
-
-            var existingBookAuthor = book.BookAuthors.FirstOrDefault();
-            if (existingBookAuthor != null)
-            {
-                existingBookAuthor.Author = existingAuthor;
-            }
-            else
-            {
-                book.BookAuthors.Add(new BookAuthor { Author = existingAuthor });
-            }
-        }
-        else 
-        {
-            var newAuthor = new Author
-            {
-                FirstName = editBookDTO.FirstName,
-                LastName = editBookDTO.LastName,
-                BirthDate = editBookDTO.BirthDate
-            };
-
-            var existingBookAuthor = book.BookAuthors.FirstOrDefault();
-            if (existingBookAuthor != null)
-            {
-                existingBookAuthor.Author = newAuthor;
-            }
-            else
-            {
-                book.BookAuthors.Add(new BookAuthor { Author = newAuthor });
-            }
-        }
-
-        book.Title = editBookDTO.Title;
-        book.Description = editBookDTO.Description;
-        book.Rating = editBookDTO.Rating;
-
-        await _context.SaveChangesAsync();
+        await _bookRepository.EditBook(editBookDTO);
 
     }
 

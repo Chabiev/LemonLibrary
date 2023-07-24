@@ -24,14 +24,14 @@ public class BookRepository : IBookRepository
             .Include(b => b.BookAuthors)
             .ThenInclude(ba => ba.Author)
             .ToListAsync();
-        List<BookDTO> bookDto = new();
+        List<BookDTO> bookDtos = new();
         foreach (var item in books)
         {
-            bookDto.Add(_mapper.Map<BookDTO>(item));
+            bookDtos.Add(_mapper.Map<BookDTO>(item));
         }
         
         
-        return bookDto;
+        return bookDtos;
     }
 
     public async Task<BookDTO> GetBookById(int id)
@@ -72,7 +72,9 @@ public class BookRepository : IBookRepository
         return existingAuthor;
     }
 
-    public async Task<Book> EditBook(EditBookDTO editBookDTO)
+
+
+    public async Task EditBook(EditBookDTO editBookDTO)
     {
         var book = await _context.Books
             .Where(b => b.Id == editBookDTO.BookId)
@@ -84,6 +86,63 @@ public class BookRepository : IBookRepository
         {
             throw new ArgumentException("No book with the given ID was found.");
         }
+        
+        
+        // Update book properties from the EditBookDTO
+        _mapper.Map(editBookDTO, book);
+
+        if (editBookDTO.AuthorId.HasValue)
+        {
+            // Update the existing book author if the author ID is specified
+            var existingAuthor = await _context.Authors.FindAsync(editBookDTO.AuthorId.Value);
+
+            if (existingAuthor == null)
+            {
+                throw new ArgumentException("The specified author does not exist.");
+            }
+
+            var existingBookAuthor = book.BookAuthors.FirstOrDefault();
+            if (existingBookAuthor != null)
+            {
+                existingBookAuthor.Author = existingAuthor;
+            }
+            else
+            {
+                book.BookAuthors.Add(new BookAuthor { Author = existingAuthor });
+            }
+        }
+        else
+        {
+            // Create a new author if the author ID is not specified
+            var newAuthor = new Author
+            {
+                FirstName = editBookDTO.FirstName,
+                LastName = editBookDTO.LastName,
+                BirthDate = editBookDTO.BirthDate
+            };
+
+            var existingBookAuthor = book.BookAuthors.FirstOrDefault();
+            if (existingBookAuthor != null)
+            {
+                existingBookAuthor.Author = newAuthor;
+            }
+            else
+            {
+                book.BookAuthors.Add(new BookAuthor { Author = newAuthor });
+            }
+        }
+
+        // Handle the image update
+        if (editBookDTO.ImageFile != null && editBookDTO.ImageFile.Length > 0)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await editBookDTO.ImageFile.CopyToAsync(memoryStream);
+                book.Image = memoryStream.ToArray();
+            }
+        }
+
+        await _context.SaveChangesAsync();
 
         // if (editBookDTO.AuthorId.HasValue)
         // {
@@ -129,8 +188,55 @@ public class BookRepository : IBookRepository
         // book.Rating = editBookDTO.Rating;
         //
         // await _context.SaveChangesAsync();
+        
+        
+        
+        
+        // _mapper.Map(editBookDTO, book);
+        //
+        // if (editBookDTO.AuthorId.HasValue)
+        // {
+        //     // Update the existing book author if the author ID is specified
+        //     var existingAuthor = await _context.Authors.FindAsync(editBookDTO.AuthorId.Value);
+        //
+        //     if (existingAuthor == null)
+        //     {
+        //         throw new ArgumentException("The specified author does not exist.");
+        //     }
+        //
+        //     var existingBookAuthor = book.BookAuthors.FirstOrDefault();
+        //     if (existingBookAuthor != null)
+        //     {
+        //         existingBookAuthor.Author = existingAuthor;
+        //     }
+        //     else
+        //     {
+        //         book.BookAuthors.Add(new BookAuthor { Author = existingAuthor });
+        //     }
+        // }
+        // else
+        // {
+        //     // Create a new author if the author ID is not specified
+        //     var newAuthor = new Author
+        //     {
+        //         FirstName = editBookDTO.FirstName,
+        //         LastName = editBookDTO.LastName,
+        //         BirthDate = editBookDTO.BirthDate
+        //     };
+        //
+        //     var existingBookAuthor = book.BookAuthors.FirstOrDefault();
+        //     if (existingBookAuthor != null)
+        //     {
+        //         existingBookAuthor.Author = newAuthor;
+        //     }
+        //     else
+        //     {
+        //         book.BookAuthors.Add(new BookAuthor { Author = newAuthor });
+        //     }
+        // }
+        //
+        // await _context.SaveChangesAsync();
 
-        return book;
     }
 
     public async Task UpdateBookStatus(int bookId)

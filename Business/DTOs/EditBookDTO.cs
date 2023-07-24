@@ -1,4 +1,6 @@
-﻿namespace Business.DTOs;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Business.DTOs;
 
 public class EditBookDTO
 {
@@ -6,6 +8,8 @@ public class EditBookDTO
     public int BookId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
+    
+    public IFormFile ImageFile { get; set; }
     public double Rating { get; set; }
 
     // Author properties

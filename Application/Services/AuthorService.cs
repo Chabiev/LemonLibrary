@@ -1,7 +1,9 @@
 ﻿using Application.Interfaces;
+using AutoMapper;
 using Business.DTOs;
 using Database.Data;
 using Database.Entities;
+using Database.Repo.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services;
@@ -9,68 +11,47 @@ namespace Application.Services;
 public class AuthorService : IAuthorService
 {
     private readonly LibraryContext _context;
+    private readonly IAuthorRepository _authorRepository;
+    private readonly IMapper _mapper;
 
-    public AuthorService(LibraryContext context)
+    public AuthorService(LibraryContext context, IAuthorRepository authorRepository, IMapper mapper)
     {
         _context = context;
+        _authorRepository = authorRepository;
+        _mapper = mapper;
     }
 
     public async Task<List<AuthorDTO>> GetAuthors()
     {
-        var books = await _context.Books
-            .Include(b => b.BookAuthors)
-            .ThenInclude(ba => ba.Author)
-            .ToListAsync();
+        var books = await _authorRepository.GetBooksForAuthors();
 
-        var authorBooksMap = new Dictionary<Author, List<Book>>();
-
-        foreach (var book in books)
+        var authors = books
+            .SelectMany(b => b.BookAuthors.Select(ba => ba.Author))
+            .Distinct()
+            .ToList();
+        
+        var authorDTOs = _mapper.Map<List<AuthorDTO>>(authors);
+        
+        foreach (var authorDTO in authorDTOs)
         {
-            foreach (var bookAuthor in book.BookAuthors)
-            {
-                if (!authorBooksMap.ContainsKey(bookAuthor.Author))
-                {
-                    authorBooksMap[bookAuthor.Author] = new List<Book>();
-                }
-
-                authorBooksMap[bookAuthor.Author].Add(book);
-            }
+            authorDTO.Books = books
+                .Where(b => b.BookAuthors.Any(ba => ba.Author.Id == authorDTO.Id))
+                .Select(b => _mapper.Map<BookDTO>(b))
+                .ToList();
         }
-
-        var authorDTOs = authorBooksMap.Select(kv => new AuthorDTO
-        {
-            Id = kv.Key.Id,
-            FirstName = kv.Key.FirstName,
-            LastName = kv.Key.LastName,
-            BirthDate = kv.Key.BirthDate,
-
-            Books = kv.Value.Select(book => new BookDTO
-            {
-                Id = book.Id,
-                Title = book.Title,
-                Description = book.Description,
-                Rating = book.Rating,
-                DateAdded = book.DateAdded,
-                Available = book.available,
-            }).ToList()
-        }).ToList();
-
+        
         if (authorDTOs.Count == 0)
         {
-            throw new InvalidOperationException();
+            throw new InvalidOperationException("No authors found.");
         }
-
+        
         return authorDTOs;
     }
 
 
     public async Task<AuthorDTO> GetAuthorById(int id)
     {
-        var author = await _context.Authors
-            .Where(a => a.Id == id)
-            .Include(a => a.BookAuthors)
-            .ThenInclude(ba => ba.Book)
-            .SingleOrDefaultAsync();
+        var author = await _authorRepository.GetAuthorById(id);
 
         if (author == null)
         {
@@ -86,16 +67,17 @@ public class AuthorService : IAuthorService
             DateAdded = ba.Book.DateAdded,
             Available = ba.Book.available,
         }).ToList();
-
+        
         var authorDTO = new AuthorDTO
         {
             Id = author.Id,
             FirstName = author.FirstName,
             LastName = author.LastName,
             BirthDate = author.BirthDate,
-
+        
             Books = booksDTO
         };
+        // return _mapper.Map<AuthorDTO>(author);
 
         return authorDTO;
     }
@@ -104,15 +86,8 @@ public class AuthorService : IAuthorService
     {
         string normalizedFirstName = addAuthorDto.FirstName.ToLower();
         string normalizedLastName = addAuthorDto.LastName.ToLower();
-
-        var existingAuthor = await _context.Authors.FirstOrDefaultAsync(a =>
-            a.FirstName.ToLower() == normalizedFirstName &&
-            a.LastName.ToLower() == normalizedLastName);
-
-        if (existingAuthor != null)
-        {
-            throw new ArgumentException("This author is already added");
-        }
+        
+        await _authorRepository.CheckAuthor(normalizedFirstName, normalizedLastName);
 
         var newAuthor = new Author
         {
@@ -120,7 +95,7 @@ public class AuthorService : IAuthorService
             LastName = addAuthorDto.LastName,
             BirthDate = addAuthorDto.BirthDate
         };
-
+        
         _context.Authors.Add(newAuthor);
         await _context.SaveChangesAsync();
 
@@ -129,14 +104,7 @@ public class AuthorService : IAuthorService
     public async Task EditAuthor(EditAuthorDTO editAuthorDTO)
     {
         // Fetch the specific author with the given ID from the database
-        var author = await _context.Authors
-            .Where(b => b.Id == editAuthorDTO.AuthorId)
-            .SingleOrDefaultAsync();
-
-        if (author == null)
-        {
-            throw new ArgumentException("No author with the given ID was found.");
-        }
+        var author = await _authorRepository.CheckAuthorForUpdate(editAuthorDTO);
 
         author.FirstName = editAuthorDTO.FirstName;
         author.LastName = editAuthorDTO.LastName;
@@ -147,14 +115,6 @@ public class AuthorService : IAuthorService
 
     public async Task DeleteAuthorById(int authorId)
     {
-        var author = await _context.Authors.FindAsync(authorId);
-
-        if (author == null)
-        {
-            throw new ArgumentException("No author with the given ID was found.");
-        }
-
-        _context.Authors.Remove(author);
-        await _context.SaveChangesAsync();
+        await _authorRepository.DeleteAuthorById(authorId);
     }
 }
