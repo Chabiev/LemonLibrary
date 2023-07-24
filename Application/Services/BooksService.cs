@@ -1,4 +1,7 @@
 ﻿using Application.Interfaces;
+using AutoMapper;
+using Database.Repo.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 namespace Application.Services;
 using Database.Data;
@@ -8,95 +11,38 @@ using Database.Entities;
 public class BooksService : IBooksService
 {
     private readonly LibraryContext _context;
+    private readonly IBookRepository _bookRepository;
+    private readonly IMapper _mapper;
 
-    public BooksService(LibraryContext context)
+    public BooksService(LibraryContext context, IBookRepository bookRepository, IMapper mapper)
     {
         _context = context;
+        _bookRepository = bookRepository;
+        _mapper = mapper;
     }
 
     public async Task<List<BookDTO>> GetBooks()
     {
-
-        var books = await _context.Books
-            .Include(b => b.BookAuthors)
-            .ThenInclude(ba => ba.Author)
-            .ToListAsync();
-        if (books.Count == 0)
-        {
-            throw new InvalidOperationException("No book was found");
-        }
-
-        var bookDTOs = books.Select(book => new BookDTO
-        {
-            Id = book.Id,
-            Title = book.Title,
-            Description = book.Description,
-            Rating = book.Rating,
-            DateAdded = book.DateAdded,
-            Available = book.available,
-
-            Authors = book.BookAuthors.Select(ba => new AuthorDTO
-            {
-                Id = ba.Author.Id,
-                FirstName = ba.Author.FirstName,
-                LastName = ba.Author.LastName,
-                BirthDate = ba.Author.BirthDate,
-            }).ToList()
-        }).ToList();
-
-
-
+        var books = await _bookRepository.GetBooks();
+        
+        var bookDTOs = _mapper.Map<List<BookDTO>>(books);
+        
         return bookDTOs;
     }
 
     public async Task<BookDTO> GetBookById(int id)
     {
-        var book = await _context.Books
-            .Where(b => b.Id == id)
-            .Include(b => b.BookAuthors)
-            .ThenInclude(ba => ba.Author)
-            .SingleOrDefaultAsync();
+        var book = await _bookRepository.GetBookById(id);
 
-        if (book == null)
-        {
-            throw
-                new ArgumentNullException("No book Id"); 
-        }
-
-        var bookDTO = new BookDTO
-        {
-            Id = book.Id,
-            Title = book.Title,
-            Description = book.Description,
-            Rating = book.Rating,
-            DateAdded = book.DateAdded,
-            Available = book.available,
-
-            Authors = book.BookAuthors.Select(ba => new AuthorDTO
-            {
-                Id = ba.Author.Id,
-                FirstName = ba.Author.FirstName,
-                LastName = ba.Author.LastName,
-                BirthDate = ba.Author.BirthDate,
-            }).ToList()
-        };
+        var bookDTO = _mapper.Map<BookDTO>(book);
 
         return bookDTO; 
     }
 
-    public async Task AddBookWithAuthor(BookAuthorDTO bookAuthorDTO)
+    public async Task AddBookWithAuthor(BookAuthorDTO bookAuthorDTO, IFormFile imageFile)
     {
-        Author existingAuthor = await _context.Authors.FirstOrDefaultAsync(a =>
-            a.FirstName.ToLower() == bookAuthorDTO.FirstName.ToLower() &&
-            a.LastName.ToLower() == bookAuthorDTO.LastName.ToLower());
-
-        bool titleExists = await _context.Books.AnyAsync(b =>
-            b.Title.ToLower() == bookAuthorDTO.Title.ToLower());
-
-        if (titleExists)
-        {
-            throw new ArgumentException("A book with the same title already exists.");
-        }
+        Author existingAuthor = await _bookRepository.CheckBook(bookAuthorDTO);
+        
 
         if (existingAuthor == null)
         {
@@ -107,6 +53,16 @@ public class BooksService : IBooksService
                 BirthDate = bookAuthorDTO.BirthDate
             };
         }
+        
+        byte[] imageByteArray = null;
+        if (imageFile != null && imageFile.Length > 0)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await imageFile.CopyToAsync(memoryStream);
+                imageByteArray = memoryStream.ToArray();
+            }
+        }
 
         var book = new Book
         {
@@ -114,7 +70,8 @@ public class BooksService : IBooksService
             Description = bookAuthorDTO.Description,
             Rating = bookAuthorDTO.Rating,
             DateAdded = bookAuthorDTO.DateAdded,
-            available = bookAuthorDTO.Available
+            available = bookAuthorDTO.Available,
+            Image = imageByteArray
         };
 
         book.BookAuthors = new[]
@@ -190,29 +147,11 @@ public class BooksService : IBooksService
 
     public async Task ToggleBookStatus(int bookId)
     {
-        var book = await _context.Books.FindAsync(bookId);
-
-        if (book == null)
-        {
-            throw new ArgumentException("No book with the given ID was found.");
-        }
-
-        book.available = !book.available;
-
-        await _context.SaveChangesAsync();
+        await _bookRepository.UpdateBookStatus(bookId);
     }
 
     public async Task DeleteBookById(int bookId)
     {
-        var book = await _context.Books.FindAsync(bookId);
-
-        if (book == null)
-        {
-            throw new ArgumentException("No book with the given ID was found.");
-        }
-
-        _context.Books.Remove(book);
-        await _context.SaveChangesAsync();
-
+        await _bookRepository.DeleteBookById(bookId);
     }
 }

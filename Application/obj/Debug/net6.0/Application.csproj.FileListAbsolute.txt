@@ -17,3 +17,22 @@ D:\LemonDo\LemonLibrary\Application\obj\Debug\net6.0\refint\Application.dll
 D:\LemonDo\LemonLibrary\Application\obj\Debug\net6.0\Application.pdb
 D:\LemonDo\LemonLibrary\Application\obj\Debug\net6.0\Application.genruntimeconfig.cache
 D:\LemonDo\LemonLibrary\Application\obj\Debug\net6.0\ref\Application.dll
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Application.deps.json
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Application.runtimeconfig.json
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Application.dll
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Application.pdb
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Business.dll
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Database.dll
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Business.pdb
+F:\Irakli\Lemon\Lemon Library\Application\bin\Debug\net6.0\Database.pdb
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.csproj.AssemblyReference.cache
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.dll
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\refint\Application.dll
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.pdb
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\Application.genruntimeconfig.cache
+F:\Irakli\Lemon\Lemon Library\Application\obj\Debug\net6.0\ref\Application.dll
