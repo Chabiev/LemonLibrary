@@ -29,7 +29,7 @@ public class BooksService : IBooksService
         var books = await _bookRepository.GetBooks();
         
         var bookDTOs = _mapper.Map<List<BookDTO>>(books);
-        
+
         return bookDTOs;
     }
 

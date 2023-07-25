@@ -98,9 +98,6 @@ D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win-arm\native\M
 D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
@@ -152,3 +149,8 @@ F:\Irakli\Lemon\Lemon Library\Lemon Library\bin\Debug\net6.0\ImageProcessorCore.
 F:\Irakli\Lemon\Lemon Library\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 F:\Irakli\Lemon\Lemon Library\Lemon Library\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 F:\Irakli\Lemon\Lemon Library\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\ImageProcessorCore.dll
+D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\SixLabors.ImageSharp.dll
+D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll

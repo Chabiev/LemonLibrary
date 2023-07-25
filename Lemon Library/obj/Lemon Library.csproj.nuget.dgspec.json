@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Irakli\\Lemon\\Lemon Library\\Lemon Library\\Lemon Library.csproj": {}
+    "D:\\LemonDo\\LemonLibrary\\Lemon Library\\Lemon Library.csproj": {}
   },
   "projects": {
-    "F:\\Irakli\\Lemon\\Lemon Library\\Application\\Application.csproj": {
+    "D:\\LemonDo\\LemonLibrary\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Irakli\\Lemon\\Lemon Library\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\LemonDo\\LemonLibrary\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "F:\\Irakli\\Lemon\\Lemon Library\\Application\\obj\\",
+        "projectPath": "D:\\LemonDo\\LemonLibrary\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\LemonDo\\LemonLibrary\\Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Irakli\\Lemon\\Lemon Library\\Business\\Business.csproj": {
-                "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Business\\Business.csproj"
+              "D:\\LemonDo\\LemonLibrary\\Business\\Business.csproj": {
+                "projectPath": "D:\\LemonDo\\LemonLibrary\\Business\\Business.csproj"
               },
-              "F:\\Irakli\\Lemon\\Lemon Library\\Database\\Database.csproj": {
-                "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Database\\Database.csproj"
+              "D:\\LemonDo\\LemonLibrary\\Database\\Database.csproj": {
+                "projectPath": "D:\\LemonDo\\LemonLibrary\\Database\\Database.csproj"
               }
             }
           }
@@ -101,40 +106,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Irakli\\Lemon\\Lemon Library\\Business\\Business.csproj": {
+    "D:\\LemonDo\\LemonLibrary\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Irakli\\Lemon\\Lemon Library\\Business\\Business.csproj",
+        "projectUniqueName": "D:\\LemonDo\\LemonLibrary\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Business\\Business.csproj",
-        "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "F:\\Irakli\\Lemon\\Lemon Library\\Business\\obj\\",
+        "projectPath": "D:\\LemonDo\\LemonLibrary\\Business\\Business.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\LemonDo\\LemonLibrary\\Business\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -142,6 +137,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -202,40 +198,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Irakli\\Lemon\\Lemon Library\\Database\\Database.csproj": {
+    "D:\\LemonDo\\LemonLibrary\\Database\\Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Irakli\\Lemon\\Lemon Library\\Database\\Database.csproj",
+        "projectUniqueName": "D:\\LemonDo\\LemonLibrary\\Database\\Database.csproj",
         "projectName": "Database",
-        "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Database\\Database.csproj",
-        "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "F:\\Irakli\\Lemon\\Lemon Library\\Database\\obj\\",
+        "projectPath": "D:\\LemonDo\\LemonLibrary\\Database\\Database.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\LemonDo\\LemonLibrary\\Database\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -243,14 +229,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Irakli\\Lemon\\Lemon Library\\Business\\Business.csproj": {
-                "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Business\\Business.csproj"
+              "D:\\LemonDo\\LemonLibrary\\Business\\Business.csproj": {
+                "projectPath": "D:\\LemonDo\\LemonLibrary\\Business\\Business.csproj"
               }
             }
           }
@@ -299,40 +286,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Irakli\\Lemon\\Lemon Library\\Lemon Library\\Lemon Library.csproj": {
+    "D:\\LemonDo\\LemonLibrary\\Lemon Library\\Lemon Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Irakli\\Lemon\\Lemon Library\\Lemon Library\\Lemon Library.csproj",
+        "projectUniqueName": "D:\\LemonDo\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
         "projectName": "Lemon Library",
-        "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Lemon Library\\Lemon Library.csproj",
-        "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "F:\\Irakli\\Lemon\\Lemon Library\\Lemon Library\\obj\\",
+        "projectPath": "D:\\LemonDo\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\LemonDo\\LemonLibrary\\Lemon Library\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -340,14 +317,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Irakli\\Lemon\\Lemon Library\\Application\\Application.csproj": {
-                "projectPath": "F:\\Irakli\\Lemon\\Lemon Library\\Application\\Application.csproj"
+              "D:\\LemonDo\\LemonLibrary\\Application\\Application.csproj": {
+                "projectPath": "D:\\LemonDo\\LemonLibrary\\Application\\Application.csproj"
               }
             }
           }
@@ -396,24 +374,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.13, 6.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -422,7 +382,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

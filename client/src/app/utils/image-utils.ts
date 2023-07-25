@@ -1,11 +1,23 @@
 ﻿import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
-export function getSafeImageUrl
-(sanitizer: DomSanitizer, imageBytes: Uint8Array | null): SafeUrl | null {
-  if (imageBytes && imageBytes.length > 0) {
-    const base64String = btoa(String.fromCharCode(...imageBytes));
-    const dataUrl = `data:image/jpeg;base64,${base64String}`;
-    return sanitizer.bypassSecurityTrustUrl(dataUrl);
+export function getSafeImageUrl(sanitizer: DomSanitizer, imageByteArray: any): SafeUrl {
+  if (imageByteArray && imageByteArray.length > 0) {
+    const blob = new Blob([imageByteArray], { type: 'image/jpeg' });
+    const imageUrl: string = URL.createObjectURL(blob);
+    return sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
-  return null;
+  return '';
+}
+
+// Add the dataURItoBlob function in the same file
+export function dataURItoBlob(dataURI: string): Uint8Array {
+  const byteString = atob(dataURI);
+  const arrayBuffer = new ArrayBuffer(byteString.length);
+  const uint8Array = new Uint8Array(arrayBuffer);
+
+  for (let i = 0; i < byteString.length; i++) {
+    uint8Array[i] = byteString.charCodeAt(i);
+  }
+
+  return uint8Array;
 }

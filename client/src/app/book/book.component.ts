@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Book} from "../Models/book";
 import {BookService} from "../services/book.service";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
@@ -10,10 +10,10 @@ import {getSafeImageUrl} from "../utils/image-utils";
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit{
-  books: any[];
+  books: Book[];
   book: any;
 
-  constructor(private bookService: BookService , private sanitizer: DomSanitizer) { }
+  constructor(private bookService: BookService , private sanitizer: DomSanitizer , private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getAllBooks();
@@ -21,46 +21,47 @@ export class BookComponent implements OnInit{
 
 
   getAllBooks(): void {
-    this.bookService.getAllBooks().subscribe(
-      {
-        next: (response: any[]) =>{
-          console.log('log books: ', response);
-          this.books = response;
-          this.processImageUrls();
-          console.log('log books: ', response);
-          this.books = response;
-
-        },
-        error: (error) => {
-          console.error('Error loading books: ', error)
-        }});
+    this.bookService.getAllBooks().subscribe({
+      next: (response: any[]) => {
+        console.log('log books: ', response);
+        this.books = response;
+        this.processImages();
+        this.cdRef.detectChanges();
+      },
+      error: (error) => {
+        console.error('Error loading books: ', error);
+      },
+    });
   }
 
 
-  private processImageUrls(): void {
+
+  private processImages(): void {
     for (const book of this.books) {
-      book.image = getSafeImageUrl(this.sanitizer, book.image);
+      if (book.image && book.image.length > 0) {
+        const byteString = atob(book.image); // Convert base64 string to binary
+        const bytes = new Uint8Array(byteString.length);
+        for (let i = 0; i < byteString.length; i++) {
+          bytes[i] = byteString.charCodeAt(i);
+        }
+
+        const blob = new Blob([bytes], { type: 'image/jpeg' });
+        book.imageUrl = URL.createObjectURL(blob);
+      } else {
+        // Set a placeholder URL or a default image URL if no image is available
+        book.imageUrl = '/assets/Book-Cover-Template.jpg';
+      }
     }
   }
-  // getImageUrl(imageBytes: Uint8Array | null): SafeUrl | null {
-  //   if (imageBytes && imageBytes.length > 0) {
-  //     const base64String = btoa(String.fromCharCode(...imageBytes));
-  //     const dataUrl = `data:image/jpeg;base64,${base64String}`;
-  //     return this.sanitizer.bypassSecurityTrustUrl(dataUrl);
-  //   }
-  //   return null;
-  // }
+  private arrayBufferToBase64(buffer: any): string {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary); // Use btoa() to convert binary to base64
+  }
 
-  // getSafeImageUrl(imageBytes: Uint8Array | null): SafeUrl | null {
-  //   return getSafeImageUrl(this.sanitizer, imageBytes); // Pass the DomSanitizer instance
-  // }
 
-  // getImageUrl(imageBytes: Uint8Array | null): SafeUrl | null {
-  //   if (imageBytes && imageBytes.length > 0) {
-  //     const base64String = btoa(String.fromCharCode(...imageBytes));
-  //     const dataUrl = `data:image/jpeg;base64,${base64String}`;
-  //     return this.sanitizer.bypassSecurityTrustUrl(dataUrl);
-  //   }
-  //   return null;
-  // }
 }

@@ -11,7 +11,6 @@ public class BookDTO
     public DateTime DateAdded { get; set; }
     public bool Available { get; set; }
     
-    
-    
     public ICollection<AuthorDTO> Authors { get; set; }
+
 }
