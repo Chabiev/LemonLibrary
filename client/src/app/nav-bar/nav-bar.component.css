@@ -1,0 +1,9 @@
+/* Apply styles to the active link */
+.navbar-nav .nav-item .nav-link.active {
+  font-weight: bold; /* Example: Make the font bold for active links */
+}
+
+/* Apply styles to the faded link */
+.navbar-nav .nav-item .nav-link:not(.active) {
+  opacity: 0.6; /* Example: Reduce opacity for non-active links */
+}

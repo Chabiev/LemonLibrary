@@ -21,6 +21,17 @@ builder.Services.AddDbContext<LibraryContext>(config =>
     config.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin", builder =>
+        builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -50,6 +61,8 @@ builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 
 var app = builder.Build();
+
+app.UseCors("AllowOrigin");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
