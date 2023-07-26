@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Database.migrations
+namespace Database.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20230720171024_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230726130734_InitialMigrate")]
+    partial class InitialMigrate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace Database.migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Lemon_Library.Entities.Author", b =>
+            modelBuilder.Entity("Database.Entities.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace Database.migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("Lemon_Library.Entities.Book", b =>
+            modelBuilder.Entity("Database.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,7 @@ namespace Database.migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Lemon_Library.Entities.BookAuthor", b =>
+            modelBuilder.Entity("Database.Entities.BookAuthor", b =>
                 {
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -96,15 +96,40 @@ namespace Database.migrations
                     b.ToTable("BookAuthor");
                 });
 
-            modelBuilder.Entity("Lemon_Library.Entities.BookAuthor", b =>
+            modelBuilder.Entity("Database.Entities.User", b =>
                 {
-                    b.HasOne("Lemon_Library.Entities.Author", "Author")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Database.Entities.BookAuthor", b =>
+                {
+                    b.HasOne("Database.Entities.Author", "Author")
                         .WithMany("BookAuthors")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Lemon_Library.Entities.Book", "Book")
+                    b.HasOne("Database.Entities.Book", "Book")
                         .WithMany("BookAuthors")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -115,12 +140,12 @@ namespace Database.migrations
                     b.Navigation("Book");
                 });
 
-            modelBuilder.Entity("Lemon_Library.Entities.Author", b =>
+            modelBuilder.Entity("Database.Entities.Author", b =>
                 {
                     b.Navigation("BookAuthors");
                 });
 
-            modelBuilder.Entity("Lemon_Library.Entities.Book", b =>
+            modelBuilder.Entity("Database.Entities.Book", b =>
                 {
                     b.Navigation("BookAuthors");
                 });

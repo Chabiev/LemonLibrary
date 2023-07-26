@@ -3,3 +3,21 @@
   /*margin-right:50px;*/
   /*margin-left: 50px;*/
 }
+
+.card-img-top{
+  /*object-fit: cover;*/
+  max-height: 500px;
+  max-width: 400px;
+}
+
+.card{
+  max-width: 400px;
+  min-height: 650px;
+  overflow-y: hidden;
+}
+
+.rating{
+  width: 100%;
+  text-align: right;
+}
+

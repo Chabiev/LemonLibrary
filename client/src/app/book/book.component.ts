@@ -2,7 +2,6 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Book} from "../Models/book";
 import {BookService} from "../services/book.service";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
-import {getSafeImageUrl} from "../utils/image-utils";
 
 @Component({
   selector: 'app-book',
@@ -11,6 +10,7 @@ import {getSafeImageUrl} from "../utils/image-utils";
 })
 export class BookComponent implements OnInit{
   books: Book[];
+  authors: any[];
   book: any;
 
   constructor(private bookService: BookService , private sanitizer: DomSanitizer , private cdRef: ChangeDetectorRef) { }

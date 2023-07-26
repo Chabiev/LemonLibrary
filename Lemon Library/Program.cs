@@ -1,3 +1,4 @@
+using System.Text;
 using Application.Interfaces;
 using Application.Services;
 using Application.SwaggerFilters;
@@ -6,7 +7,10 @@ using Database.Data;
 using Database.Entities;
 using Database.Repo.Interfaces;
 using Database.Repo.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +34,28 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
-
+// var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+// var key = Encoding.ASCII.GetBytes(jwtSettings["SecretKey"]);
+//
+// builder.Services.AddAuthentication(options =>
+//     {
+//         options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+//     })
+//     .AddJwtBearer(options =>
+//     {
+//         options.RequireHttpsMetadata = false;
+//         options.SaveToken = true;
+//         options.TokenValidationParameters = new TokenValidationParameters
+//         {
+//             ValidateIssuerSigningKey = true,
+//             IssuerSigningKey = new SymmetricSecurityKey(key),
+//             ValidateIssuer = true,
+//             ValidIssuer = jwtSettings["Issuer"],
+//             ValidateAudience = true,
+//             ValidAudience = jwtSettings["Audience"],
+//         };
+//     });
+//
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -72,6 +97,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication(); 
 
 app.UseAuthorization();
 
