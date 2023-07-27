@@ -12,7 +12,7 @@ export class BookDataService {
     this.selectedBook = book;
   }
 
-  getSelectedBook(): Book {
+  getSelectedBook(): any {
     return this.selectedBook;
   }
 }

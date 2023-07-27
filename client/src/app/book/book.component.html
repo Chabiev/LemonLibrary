@@ -2,6 +2,7 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="container-fluid">
+  <button class="btn btn-danger" routerLinkActive="active" style="margin-bottom: 40px" (click)="goToAdd()">Add Book</button>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col" *ngFor="let book of books">
       <div class="card" [routerLink]="['/books', book.id]">

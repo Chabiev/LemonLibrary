@@ -15,6 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import {BookDataService} from "./services/book-data.service";
+import { AddBookComponent } from './add-book/add-book.component';
+import {CommonModule, DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -26,15 +28,18 @@ import {BookDataService} from "./services/book-data.service";
     RegisterComponent,
     BookDetailsComponent,
     EditBookComponent,
+    AddBookComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
-  providers: [BookService, AuthorService,BookDataService],
+  providers: [BookService, AuthorService,BookDataService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

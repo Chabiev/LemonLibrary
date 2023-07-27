@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class BookService implements OnInit{
-  private apiUrl = 'http://localhost:5000/api/Books/';
+  private apiUrl = 'https://localhost:44330/api/Books/';
 
   editId:number
 
@@ -43,24 +43,10 @@ export class BookService implements OnInit{
   getEditId(): number {
     return this.editId;
   }
-  updateBook(book: Book): Observable<any> {
-    const formData = new FormData();
-    formData.append('Title', book.title);
-    formData.append('Description', book.description);
-    formData.append('Rating', book.rating.toString());
-    formData.append('Available', book.available.toString());
+  updateBook(book: any): Observable<any> {
 
-    // Get the token from local storage
-    const token = localStorage.getItem('token');
 
-    // Add the token to the request headers
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${token}`,
-    });
-    console.log(headers);
-
-    return this.http.put(this.apiUrl + 'edit', formData, { headers });
+    return this.http.put('https://localhost:44330/api/Books/edit',book);
   }
 
 

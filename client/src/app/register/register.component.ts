@@ -19,7 +19,7 @@ export class RegisterComponent {
 
   register() {
     const regData = { username: this.username, password: this.password };
-    this.http.post('https://localhost:5002/api/User/register', regData, { responseType: 'text' }).subscribe({
+    this.http.post('https://localhost:44330/api/User/register', regData, { responseType: 'text' }).subscribe({
       next: (response) => {
         console.log(response);
 

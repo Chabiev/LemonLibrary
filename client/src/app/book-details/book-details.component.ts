@@ -28,7 +28,7 @@ export class BookDetailsComponent implements OnInit{
     // Fetch the book details using the BookService
     this.bookService.getBookById(id).subscribe({
       next: (book: Book) => {
-        console.log(book);
+        console.log('logging book: ',book);
         this.book = book;
 
         this.processImages();
@@ -47,7 +47,7 @@ export class BookDetailsComponent implements OnInit{
   goToEdit() {
     // Set the selected book ID in the BookService
     this.bookService.takeBookById(this.book.id);
-    this.router.navigate(['book', 'edit']);
+    this.router.navigate(['books', 'edit']);
   }
 
   private processImages(): void {

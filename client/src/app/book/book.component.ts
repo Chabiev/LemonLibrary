@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Book} from "../Models/book";
 import {BookService} from "../services/book.service";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book',
@@ -13,7 +14,7 @@ export class BookComponent implements OnInit{
   authors: any[];
   book: any;
 
-  constructor(private bookService: BookService , private sanitizer: DomSanitizer , private cdRef: ChangeDetectorRef) { }
+  constructor(private bookService: BookService , private sanitizer: DomSanitizer , private cdRef: ChangeDetectorRef, private router : Router) { }
 
   ngOnInit(): void {
     this.getAllBooks();
@@ -53,15 +54,9 @@ export class BookComponent implements OnInit{
       }
     }
   }
-  private arrayBufferToBase64(buffer: any): string {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return btoa(binary); // Use btoa() to convert binary to base64
-  }
 
+  goToAdd(){
+    this.router.navigate([('books/add')]);
+  }
 
 }

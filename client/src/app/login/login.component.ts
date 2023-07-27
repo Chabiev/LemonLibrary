@@ -18,7 +18,7 @@ export class LoginComponent {
   // Function to handle login
   login() {
     const loginData = { username: this.username, password: this.password };
-    this.http.post('https://localhost:5002/api/User/login', loginData, { responseType: 'text' }).subscribe({
+    this.http.post('https://localhost:44330/api/User/login', loginData, { responseType: 'text' }).subscribe({
       next: (response) => {
         console.log(response);
 
