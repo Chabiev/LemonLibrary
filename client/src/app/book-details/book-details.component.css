@@ -1,0 +1,12 @@
+img.card-img-top {
+
+  max-width: 300px; /* Set your preferred width */
+  display: block;
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.details-container {
+  max-width: 400px; /* Set your preferred width */
+  margin: 0 auto; /* Center the container horizontally */
+  text-align: center; /* Center the text content inside the container */
+}

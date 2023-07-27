@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Application.Interfaces;
 using Business.DTOs;
 using Database.Data;
 using Database.Entities;
@@ -15,11 +16,11 @@ namespace Lemon_Library.Controllers;
 
 public class UserController : BaseApiController
 {
-    private readonly LibraryContext _context;
+    private readonly IUserService _userService;
 
-    public UserController(LibraryContext context)
+    public UserController(IUserService userService)
     {
-        _context = context;
+        _userService = userService;
     }
     
     
@@ -27,70 +28,43 @@ public class UserController : BaseApiController
     [HttpPost("register")]
     public async Task<IActionResult> RegisterUser([FromBody] UserDTO userDto)
     {
-        var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == userDto.Username);
 
-        if (existingUser != null)
+        try
         {
-            // Username already exists, return a bad request response indicating the duplicate username
-            return BadRequest("Username already exists.");
+            var result = await _userService.Register(userDto);
+            return Ok(result);
+        }
+        catch (ArgumentNullException e)
+        {
+            return NotFound($"An error occurred: {e.Message}");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"An error occurred: {ex.Message}");
         }
 
-        CreatePasswordHash(userDto.Password, out byte[] passwordHash,out byte[] passwordSalt );
-
-        var result = new User
-        {
-            Username = userDto.Username,
-            PasswordHash = passwordHash,
-            PasswordSalt = passwordSalt
-        };
-         _context.Users.Add(result);
-         await _context.SaveChangesAsync();
-
-         return Ok(result);
+         
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserDTO userDto)
     {
-        var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == userDto.Username);
-
-        if (user == null)
+        try
         {
-            return BadRequest("User not found");
+            var token = await _userService.Login(userDto);
+            return Ok(token);
         }
-
-        if (!VerifyPasswordHash(userDto.Password, user.PasswordHash, user.PasswordSalt))
+        catch (ArgumentNullException e)
         {
-            return BadRequest("Wrong Password.");
+            return NotFound($"An error occurred: {e.Message}");
         }
-
-        string token = CreateToken(user);
-
-        return Ok(token);
-    }
-
-    private string CreateToken(User user)
-    {
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"An error occurred: {ex.Message}");
+        }
         
-        return string.Empty;
+        
     }
-
-    private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-    {
-        using (var hmac = new HMACSHA512())
-        {
-            passwordSalt = hmac.Key;
-            passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-        }
-    }
-
-    private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-    {
-        using (var hmac = new HMACSHA512(passwordSalt))
-        {
-            var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            return computedHash.SequenceEqual(passwordHash);
-        }
-    }
+    
     
 }

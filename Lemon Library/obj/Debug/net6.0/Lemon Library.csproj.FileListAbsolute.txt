@@ -156,3 +156,5 @@ D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\unix\lib\net6.0\
 D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 F:\Irakli\Lemon\Lemon Library\Lemon Library\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
 F:\Irakli\Lemon\Lemon Library\Lemon Library\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+D:\LemonDo\LemonLibrary\Lemon Library\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
