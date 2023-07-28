@@ -57,35 +57,6 @@ public class BooksService : IBooksService
             };
         }
         
-        // byte[] imageByteArray = null;
-        // if (imageFile != null && imageFile.Length > 0)
-        // {
-        //     using (var memoryStream = new MemoryStream())
-        //     {
-        //         await imageFile.CopyToAsync(memoryStream);
-        //         
-        //         // Compress the image using ImageSharp
-        //         using (var image = Image.Load(memoryStream.ToArray()))
-        //         {
-        //             var encoder = new JpegEncoder
-        //             {
-        //                 Quality = 80 // Adjust the quality value as needed (0-100)
-        //             };
-        //
-        //             // Resize the image to the desired dimensions
-        //             image.Mutate(x => x.Resize(new ResizeOptions
-        //             {
-        //                 Mode = ResizeMode.Max,
-        //                 Size = new Size(800, 600)
-        //             }));
-        //
-        //             // Save the compressed image back to the memory stream
-        //             image.SaveAsJpeg(memoryStream, encoder);
-        //         }
-        //         
-        //         imageByteArray = memoryStream.ToArray();
-        //     }
-        // }
         byte[] imageByteArray = null;
         if (imageFile != null && imageFile.Length > 0)
         {

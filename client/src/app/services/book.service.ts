@@ -24,6 +24,7 @@ export class BookService implements OnInit{
   }
 
 
+  url:string;
 
 
   // Get all books
@@ -40,15 +41,24 @@ export class BookService implements OnInit{
     this.editIdSubject.next(Id);
   }
 
+  changeBookStatus(Id){
+    console.log('this.url');
+    this.url = `${this.apiUrl}/${Id}/toggle-status`;
+    return this.http.put(`${this.apiUrl}${Id}/toggle-status`,Id);
+    console.log(this.url);
+
+  }
   getEditId(): number {
     return this.editId;
   }
   updateBook(book: any): Observable<any> {
 
-
     return this.http.put('https://localhost:44330/api/Books/edit',book);
   }
 
+  deleteBook(Id){
+    return this.http.delete(this.apiUrl + Id,Id);
+  }
 
 
 

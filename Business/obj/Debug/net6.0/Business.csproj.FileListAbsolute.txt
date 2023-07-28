@@ -26,3 +26,17 @@ F:\Irakli\Lemon\Lemon Library\Business\obj\Debug\net6.0\refint\Business.dll
 F:\Irakli\Lemon\Lemon Library\Business\obj\Debug\net6.0\Business.pdb
 F:\Irakli\Lemon\Lemon Library\Business\obj\Debug\net6.0\Business.genruntimeconfig.cache
 F:\Irakli\Lemon\Lemon Library\Business\obj\Debug\net6.0\ref\Business.dll
+D:\LemonDo\New\LemonLibrary\Business\bin\Debug\net6.0\Business.deps.json
+D:\LemonDo\New\LemonLibrary\Business\bin\Debug\net6.0\Business.runtimeconfig.json
+D:\LemonDo\New\LemonLibrary\Business\bin\Debug\net6.0\Business.dll
+D:\LemonDo\New\LemonLibrary\Business\bin\Debug\net6.0\Business.pdb
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.csproj.AssemblyReference.cache
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.AssemblyInfoInputs.cache
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.AssemblyInfo.cs
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.csproj.CoreCompileInputs.cache
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.dll
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\refint\Business.dll
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.pdb
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\Business.genruntimeconfig.cache
+D:\LemonDo\New\LemonLibrary\Business\obj\Debug\net6.0\ref\Business.dll

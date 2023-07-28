@@ -1,52 +1,67 @@
 <!-- add-book.component.html -->
 <app-nav-bar></app-nav-bar>
 
-<h2>Add New Book</h2>
 <form (submit)="onSubmit()">
-  <div>
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" [(ngModel)]="book.Title" required>
-  </div>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Add New Book</h2>
+            <form (submit)="onSubmit()">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" id="title" name="title" [(ngModel)]="book.Title" class="form-control" required>
+              </div>
 
-  <div>
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" [(ngModel)]="book.Description" required></textarea>
-  </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" [(ngModel)]="book.Description" class="form-control" required></textarea>
+              </div>
 
-  <div>
-    <label for="rating">Rating:</label>
-    <input type="number" id="rating" name="rating" [(ngModel)]="book.Rating" required>
-  </div>
+              <div class="mb-3">
+                <label for="rating" class="form-label">Rating:</label>
+                <input type="number" id="rating" name="rating" [(ngModel)]="book.Rating" class="form-control" required>
+              </div>
 
-  <div>
-    <label for="dateAdded">Date Added:</label>
-    <input type="date" id="dateAdded" name="dateAdded" [(ngModel)]="book.DateAdded" required>
-  </div>
+              <div class="mb-3">
+                <label for="dateAdded" class="form-label">Date Added:</label>
+                <input type="date" id="dateAdded" name="dateAdded" [(ngModel)]="book.DateAdded" class="form-control" required>
+              </div>
 
-  <div>
-    <label for="available">Available:</label>
-    <input type="checkbox" id="available" name="available" [(ngModel)]="book.Available">
-  </div>
+              <div class="mb-3">
+                <label for="available" class="form-check-label">Available:</label>
+                <input type="checkbox" id="available" name="available" [(ngModel)]="book.Available" class="form-check-input">
+              </div>
 
-  <div>
-    <label for="firstname">FirstName:</label>
-    <input type="text" id="firstname" name="firstname" [(ngModel)]="book.FirstName" required>
-  </div>
+              <div class="mb-3">
+                <label for="firstname" class="form-label">FirstName:</label>
+                <input type="text" id="firstname" name="firstname" [(ngModel)]="book.FirstName" class="form-control" required>
+              </div>
 
-  <div>
-    <label for="lastname">LastName:</label>
-    <input type="text" id="lastname" name="lastname" [(ngModel)]="book.LastName" required>
-  </div>
+              <div class="mb-3">
+                <label for="lastname" class="form-label">LastName:</label>
+                <input type="text" id="lastname" name="lastname" [(ngModel)]="book.LastName" class="form-control" required>
+              </div>
 
-  <div>
-    <label for="birthDate">BirthDate:</label>
-    <input type="date" id="birthDate" name="birthDate" [(ngModel)]="book.BirthDate" required>
-  </div>
+              <div class="mb-3">
+                <label for="birthDate" class="form-label">BirthDate:</label>
+                <input type="date" id="birthDate" name="birthDate" [(ngModel)]="book.BirthDate" class="form-control" required>
+              </div>
 
-  <div>
-    <label for="image">Image:</label>
-    <input type="file" id="image" name="image" (change)="onImageSelected($event)" accept=".jpg, .png">
-  </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Image:</label>
+                <input type="file" id="image" name="image" (change)="onImageSelected($event)" class="form-control" accept=".jpg, .png">
+              </div>
 
-  <button type="submit">Add Book</button>
+              <div class="text-center mt-3">
+                <button  (submit)="onSubmit()" class="btn btn-primary">Add Book</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
+

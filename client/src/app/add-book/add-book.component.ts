@@ -3,6 +3,7 @@ import {Book} from "../Models/book";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Author} from "../Models/author";
 import {DatePipe} from "@angular/common";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {DatePipe} from "@angular/common";
 })
 export class AddBookComponent {
 
-  constructor(private http:HttpClient, private datePipe: DatePipe) {
+  constructor(private http:HttpClient, private datePipe: DatePipe, private router: Router) {
   }
 
   book: any = {
@@ -93,11 +94,14 @@ export class AddBookComponent {
     this.http.post('https://localhost:44330/api/Books/add', formData).subscribe({
       next: (response) => {
         console.log('Book added successfully:', response);
+
       },
       error: (error) => {
         console.error('Error adding book:', error);
       }
     });
+    // this.router.navigate(['/books']);
+
   }
 
 

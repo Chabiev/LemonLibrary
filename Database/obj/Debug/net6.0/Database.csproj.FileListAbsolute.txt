@@ -32,3 +32,20 @@ F:\Irakli\Lemon\Lemon Library\Database\obj\Debug\net6.0\refint\Database.dll
 F:\Irakli\Lemon\Lemon Library\Database\obj\Debug\net6.0\Database.pdb
 F:\Irakli\Lemon\Lemon Library\Database\obj\Debug\net6.0\Database.genruntimeconfig.cache
 F:\Irakli\Lemon\Lemon Library\Database\obj\Debug\net6.0\ref\Database.dll
+D:\LemonDo\New\LemonLibrary\Database\bin\Debug\net6.0\Database.deps.json
+D:\LemonDo\New\LemonLibrary\Database\bin\Debug\net6.0\Database.runtimeconfig.json
+D:\LemonDo\New\LemonLibrary\Database\bin\Debug\net6.0\Database.dll
+D:\LemonDo\New\LemonLibrary\Database\bin\Debug\net6.0\Database.pdb
+D:\LemonDo\New\LemonLibrary\Database\bin\Debug\net6.0\Business.dll
+D:\LemonDo\New\LemonLibrary\Database\bin\Debug\net6.0\Business.pdb
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.AssemblyReference.cache
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.AssemblyInfoInputs.cache
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.AssemblyInfo.cs
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.CoreCompileInputs.cache
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.CopyComplete
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.dll
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\refint\Database.dll
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.pdb
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\Database.genruntimeconfig.cache
+D:\LemonDo\New\LemonLibrary\Database\obj\Debug\net6.0\ref\Database.dll

@@ -17,6 +17,8 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import {BookDataService} from "./services/book-data.service";
 import { AddBookComponent } from './add-book/add-book.component';
 import {CommonModule, DatePipe} from "@angular/common";
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { AddAuthorComponent } from './add-author/add-author.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import {CommonModule, DatePipe} from "@angular/common";
     BookDetailsComponent,
     EditBookComponent,
     AddBookComponent,
+    AuthorDetailComponent,
+    AddAuthorComponent,
   ],
   imports: [
     BrowserModule,

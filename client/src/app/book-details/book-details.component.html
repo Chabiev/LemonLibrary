@@ -21,5 +21,9 @@
       </li>
     </ul>
   </div>
-  <button class="btn btn-danger" routerLinkActive="active" (click)="goToEdit()">Edit Book</button>
+  <div class="centered-buttons">
+    <button class="btn btn-primary" routerLinkActive="active" (click)="goToEdit()">Edit Book</button>
+    <button class="btn btn-success" style="margin-left: 10px" routerLinkActive="active" (click)="takeReturn()">Take / Return</button>
+    <button class="btn btn-danger" style="margin-left: 10px" routerLinkActive="active" (click)="deleteBook()">Delete Book</button>
+  </div>
 </div>

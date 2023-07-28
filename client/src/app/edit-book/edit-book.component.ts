@@ -63,6 +63,7 @@ export class EditBookComponent implements OnInit {
       description: [this.book.description, Validators.required],
       rating: [this.book.rating, [Validators.required, Validators.min(1), Validators.max(10)]],
       available: [this.book.available],
+      // Add form controls for firstName, lastName, and birthDate
       firstName: [this.book.authors[0].firstName, Validators.required],
       lastName: [this.book.authors[0].lastName, Validators.required],
       birthDate: [this.formatDate(this.book.authors[0].birthDate), Validators.required],
@@ -107,10 +108,11 @@ export class EditBookComponent implements OnInit {
       Description: this.newBookForm.get('description').value,
       Rating: this.newBookForm.get('rating').value,
       Available: this.newBookForm.get('available').value,
+      // Keep AuthorId, FirstName, LastName, BirthDate from this.book.authors
       AuthorId: this.book.authors[0].id,
-      FirstName: this.newBookForm.get('firstName').value,
-      LastName: this.newBookForm.get('lastName').value,
-      BirthDate: formattedBirthDate,
+      FirstName: this.book.authors[0].firstName,
+      LastName: this.book.authors[0].lastName,
+      BirthDate: this.formatDateForSubmit(this.book.authors[0].birthDate),
     };
 
     // Create a new FormData object to hold both the bookAuthorDTO and the imageFile

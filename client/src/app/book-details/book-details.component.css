@@ -10,3 +10,13 @@ img.card-img-top {
   margin: 0 auto; /* Center the container horizontally */
   text-align: center; /* Center the text content inside the container */
 }
+
+.centered-buttons {
+  /* Optional margin between the buttons */
+  margin-top: 20px;
+
+  /* Flexbox properties to center the buttons horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

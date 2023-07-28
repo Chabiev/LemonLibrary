@@ -14,6 +14,16 @@ export class BookDetailsComponent implements OnInit{
   book: Book;
 
 
+
+  updatedTitle: string;
+  updatedDescription: string;
+  updatedImage:any;
+  updatedRating:any;
+  updatedAuthorId:any;
+  updatedFirstName:string;
+  updatedLastName:string;
+  updatedBirthdate: any;
+
   constructor(private route: ActivatedRoute,
               private bookService: BookService,
               private cdRef: ChangeDetectorRef,
@@ -44,11 +54,41 @@ export class BookDetailsComponent implements OnInit{
     this.bookService.takeBookById(id);
   }
 
+
   goToEdit() {
     // Set the selected book ID in the BookService
     this.bookService.takeBookById(this.book.id);
     this.router.navigate(['books', 'edit']);
   }
+
+  takeReturn() {
+    this.bookService.changeBookStatus(this.book.id).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error('Error changing book status: ', error);
+      }});
+
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+
+    }
+    deleteBook(){
+    this.bookService.deleteBook(this.book.id).subscribe({
+      next: (response) => {
+        console.log(response);
+
+      },
+      error: (error) => {
+        console.error('Error deleting book: ', error);
+      }});
+
+      this.router.navigate(['books']);
+    }
+
 
   private processImages(): void {
 
