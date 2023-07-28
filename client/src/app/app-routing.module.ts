@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
 
 
-  { path: '', redirectTo: '/books', pathMatch: 'full' }, // Default route
+  { path: '', redirectTo: '/books', pathMatch: 'full' },
   { path: '**', redirectTo: '/books', pathMatch: 'full' },
 ];
 

@@ -40,7 +40,7 @@ export class BookComponent implements OnInit{
   private processImages(): void {
     for (const book of this.books) {
       if (book.image && book.image.length > 0) {
-        const byteString = atob(book.image); // Convert base64 string to binary
+        const byteString = atob(book.image);
         const bytes = new Uint8Array(byteString.length);
         for (let i = 0; i < byteString.length; i++) {
           bytes[i] = byteString.charCodeAt(i);
@@ -49,7 +49,6 @@ export class BookComponent implements OnInit{
         const blob = new Blob([bytes], { type: 'image/jpeg' });
         book.imageUrl = URL.createObjectURL(blob);
       } else {
-        // Set a placeholder URL or a default image URL if no image is available
         book.imageUrl = '/assets/Book-Cover-Template.jpg';
       }
     }

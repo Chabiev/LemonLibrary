@@ -34,10 +34,8 @@ export class BookDetailsComponent implements OnInit{
 
 
   ngOnInit(): void {
-    // Get the book ID from the route parameters
     const id = this.route.snapshot.paramMap.get('id');
 
-    // Fetch the book details using the BookService
     this.bookService.getBookById(id).subscribe({
       next: (book: Book) => {
         console.log('logging book: ',book);
@@ -45,7 +43,6 @@ export class BookDetailsComponent implements OnInit{
 
         this.processImages();
         this.cdRef.detectChanges();
-        // Process the book image here if needed
 
         this.bookDataService.setSelectedBook(book);
       },
@@ -71,7 +68,6 @@ export class BookDetailsComponent implements OnInit{
       BirthDate: this.book.authors[0].birthDate
     }
 
-    // Convert the base64 string to a Blob object
     const byteCharacters = atob(this.updatedImage);
     const byteArrays = [];
     for (let offset = 0; offset < byteCharacters.length; offset += 512) {
@@ -114,7 +110,6 @@ export class BookDetailsComponent implements OnInit{
   }
 
   goToEdit() {
-    // Set the selected book ID in the BookService
     this.bookService.takeBookById(this.book.id);
     this.router.navigate(['books', 'edit']);
   }
@@ -156,7 +151,7 @@ export class BookDetailsComponent implements OnInit{
       reader.onloadend = () => {
         if (typeof reader.result === 'string') {
           const base64String = reader.result.split(',')[1];
-          this.updatedImage = base64String; // Update the property name to Image
+          this.updatedImage = base64String;
         } else {
           console.error('Invalid image format.');
         }
@@ -171,7 +166,7 @@ export class BookDetailsComponent implements OnInit{
   private processImages(): void {
 
       if (this.book.image && this.book.image.length > 0) {
-        const byteString = atob(this.book.image); // Convert base64 string to binary
+        const byteString = atob(this.book.image);
         const bytes = new Uint8Array(byteString.length);
         for (let i = 0; i < byteString.length; i++) {
           bytes[i] = byteString.charCodeAt(i);
@@ -180,7 +175,6 @@ export class BookDetailsComponent implements OnInit{
         const blob = new Blob([bytes], { type: 'image/jpeg' });
         this.book.imageUrl = URL.createObjectURL(blob);
       } else {
-        // Set a placeholder URL or a default image URL if no image is available
         this.book.imageUrl = '/assets/Book-Cover-Template.jpg';
       }
   }

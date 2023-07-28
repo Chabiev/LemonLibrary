@@ -33,7 +33,7 @@ export class NavBarComponent implements OnInit{
       next: (response: any[]) => {
         console.log('log books: ', response);
         this.originalBooks = response;
-        this.books = [...this.originalBooks]; // Clone the original list
+        this.books = [...this.originalBooks];
       },
       error: (error) => {
         console.error('Error loading books: ', error);
@@ -45,7 +45,7 @@ export class NavBarComponent implements OnInit{
     this.authorService.getAllAuthors().subscribe({
       next: (response) => {
         this.originalAuthors = response;
-        this.authors = [...this.originalAuthors]; // Clone the original list
+        this.authors = [...this.originalAuthors];
         console.log(response);
       },
       error: (error) => {
@@ -55,22 +55,17 @@ export class NavBarComponent implements OnInit{
   }
 
   onSearch() {
-    // Filter books based on the search term
-    // In this example, we are filtering based on the book title
     this.books = this.originalBooks.filter(
       (book) =>
         book.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
 
-    // Filter authors based on the search term
-    // In this example, we are filtering based on the author's full name
     this.authors = this.originalAuthors.filter(
       (author) =>
         author.firstName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         author.lastName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
 
-    // Show or hide the dropdown based on search results
     this.showDropdown = this.books.length > 0 || this.authors.length > 0;
   }
 

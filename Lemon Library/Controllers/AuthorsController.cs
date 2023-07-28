@@ -17,9 +17,8 @@ public class AuthorsController : BaseApiController
         _context = context;
         _authorService = authorService;
     }
-    //TODO: ავტორების სრული სიის წამოღება
+    //ავტორების სრული სიის წამოღება
     
-    // GET: api/authors
     [HttpGet]
     public async Task<IActionResult> GetAuthors()
     {
@@ -36,7 +35,7 @@ public class AuthorsController : BaseApiController
     }
     
     
-    //TODO: დეტალების წამოღება
+    // დეტალების წამოღება
     
     // GET: api/authors/{id}
     [HttpGet("{id}")]
@@ -59,7 +58,7 @@ public class AuthorsController : BaseApiController
     }
     
     
-    //TODO: ავტორის დამატება
+    // ავტორის დამატება
     [HttpPost("add")]
     public async Task<IActionResult> AddAuthor([FromBody] AddAuthorDTO addAuthorDto)
     {
@@ -81,7 +80,7 @@ public class AuthorsController : BaseApiController
     }
 
 
-    //TODO: ავტორის რედაქტირება
+    //ავტორის რედაქტირება
     [HttpPut("edit")]
     public async Task<IActionResult> UpdateAuthor([FromBody] EditAuthorDTO updatedAuthor)
     {
@@ -102,7 +101,7 @@ public class AuthorsController : BaseApiController
 
     }
     
-    //TODO: ავტორის წაშლა
+    // ავტორის წაშლა
     [HttpDelete("{authorId}")]
     public async Task<IActionResult> DeleteBookById(int authorId)
     {

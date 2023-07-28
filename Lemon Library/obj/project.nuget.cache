@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2ME/mIsW9VPNfCuirF/U7XDVmIf/kIRQmrDUe/ZBbx0LD/VpdKXS87ABFIGWYLoEiU59XNc9m9RHbpxP2MgBtQ==",
+  "dgSpecHash": "x7acZireNCoVTrmCPO2JiQSrvxoBB8GZtFd/Ks0ARwjLjzG/TXQOtvd+NxAppl4OZiAjRtkjnVV5XRXUWnIeUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
+  "projectFilePath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Goga\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Goga\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

@@ -9,10 +9,9 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Convert the token to a boolean value
+    return !!localStorage.getItem('token');
   }
 
-  // Function to log out the user
   logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);

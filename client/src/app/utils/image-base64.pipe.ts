@@ -7,7 +7,6 @@ export class ImageBase64Pipe implements PipeTransform {
       const base64String = this.arrayBufferToBase64(value);
       return 'data:image/jpeg;base64,' + base64String;
     } else {
-      // Replace 'path/to/placeholder-image.jpg' with the actual path to your placeholder image
       return '/assets/Book-Cover-Template.jpg';
     }
   }

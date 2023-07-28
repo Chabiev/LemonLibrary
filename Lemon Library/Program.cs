@@ -1,7 +1,6 @@
 using System.Text;
 using Application.Interfaces;
 using Application.Services;
-using Application.SwaggerFilters;
 using Business.Helpers;
 using Database.Data;
 using Database.Entities;
@@ -16,16 +15,13 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
 
-// Configure the database connection
 builder.Services.AddDbContext<LibraryContext>(config =>
     config.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-// Add CORS services
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigin", builder =>
@@ -60,7 +56,6 @@ var app = builder.Build();
 
 app.UseCors("AllowOrigin");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

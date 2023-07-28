@@ -27,7 +27,6 @@ export class BookService implements OnInit{
   url:string;
 
 
-  // Get all books
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.apiUrl);
   }
@@ -59,15 +58,5 @@ export class BookService implements OnInit{
   deleteBook(Id){
     return this.http.delete(this.apiUrl + Id,Id);
   }
-
-
-
-
-  // editBook(book: Book): Observable<any> {
-  //   book.id= this.Id
-  //   const url = `${this.apiUrl}/books/edit`;
-  //   return this.http.put(url, book);
-  // }
-
 
 }

@@ -18,12 +18,12 @@ export class EditBookComponent implements OnInit {
   newBookForm: FormGroup;
 
   newBook : any = {
-    BookId: null, //this.bookId,
+    BookId: null,
     Title: '',
     Description: '',
     ImageFile: null,
     Rating: '',
-    AuthorId: null, // this.book.authors[1].id,
+    AuthorId: null,
     FirstName:'',
     Lastname: '',
     Birthdate: new Date(),

@@ -66,3 +66,20 @@ C:\Users\Goga\Desktop\Lemondo\LemonLibrary\Database\obj\Debug\net6.0\refint\Data
 C:\Users\Goga\Desktop\Lemondo\LemonLibrary\Database\obj\Debug\net6.0\Database.pdb
 C:\Users\Goga\Desktop\Lemondo\LemonLibrary\Database\obj\Debug\net6.0\Database.genruntimeconfig.cache
 C:\Users\Goga\Desktop\Lemondo\LemonLibrary\Database\obj\Debug\net6.0\ref\Database.dll
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\bin\Debug\net6.0\Database.deps.json
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\bin\Debug\net6.0\Database.runtimeconfig.json
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\bin\Debug\net6.0\Database.dll
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\bin\Debug\net6.0\Database.pdb
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\bin\Debug\net6.0\Business.dll
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\bin\Debug\net6.0\Business.pdb
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.AssemblyReference.cache
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.AssemblyInfoInputs.cache
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.AssemblyInfo.cs
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.csproj.CopyComplete
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.dll
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\refint\Database.dll
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.pdb
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\Database.genruntimeconfig.cache
+C:\Users\Goga\Desktop\Lem archive\LemonLibrary\Database\obj\Debug\net6.0\ref\Database.dll

@@ -9,7 +9,6 @@ export function getSafeImageUrl(sanitizer: DomSanitizer, imageByteArray: any): S
   return '';
 }
 
-// Add the dataURItoBlob function in the same file
 export function dataURItoBlob(dataURI: string): Uint8Array {
   const byteString = atob(dataURI);
   const arrayBuffer = new ArrayBuffer(byteString.length);

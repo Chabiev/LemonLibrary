@@ -6835,11 +6835,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
+      "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
       "projectName": "Lemon Library",
-      "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
+      "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Lemon Library\\Lemon Library.csproj",
       "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Lemon Library\\obj\\",
+      "outputPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Lemon Library\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6856,8 +6856,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Application\\Application.csproj"
+            "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Application\\Application.csproj"
             }
           }
         }

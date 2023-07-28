@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Application\\Application.csproj": {}
+    "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Application\\Application.csproj": {
+    "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Application\\obj\\",
+        "outputPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj": {
-                "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj"
+              "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj"
               },
-              "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Database\\Database.csproj": {
-                "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Database\\Database.csproj"
+              "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Database\\Database.csproj": {
+                "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Database\\Database.csproj"
               }
             }
           }
@@ -140,14 +140,14 @@
         }
       }
     },
-    "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj": {
+    "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj",
+        "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj",
         "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\obj\\",
+        "outputPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -257,14 +257,14 @@
         }
       }
     },
-    "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Database\\Database.csproj": {
+    "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Database\\Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Database\\Database.csproj",
+        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Database\\Database.csproj",
         "projectName": "Database",
-        "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Database\\Database.csproj",
+        "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Database\\Database.csproj",
         "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Database\\obj\\",
+        "outputPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -281,8 +281,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj": {
-                "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj"
+              "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj"
               }
             }
           }

@@ -14,8 +14,8 @@ public class AutoMapperProfiles : Profile
         CreateMap<Author, AuthorDTO>();
 
         CreateMap<EditBookDTO, Book>()
-            .ForMember(dest => dest.Image, opt => opt.MapFrom(src => GetImageByteArray(src.ImageFile))) // Handle the Image property mapping
-            .ForMember(dest => dest.BookAuthors, opt => opt.Ignore()); // Ignore BookAuthors property for now
+            .ForMember(dest => dest.Image, opt => opt.MapFrom(src => GetImageByteArray(src.ImageFile)))
+            .ForMember(dest => dest.BookAuthors, opt => opt.Ignore()); 
         CreateMap<IFormFile, byte[]>().ConvertUsing(src => GetImageByteArray(src));
     }
     

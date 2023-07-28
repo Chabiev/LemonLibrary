@@ -77,7 +77,6 @@ public class AuthorService : IAuthorService
         
             Books = booksDTO
         };
-        // return _mapper.Map<AuthorDTO>(author);
 
         return authorDTO;
     }
@@ -103,7 +102,6 @@ public class AuthorService : IAuthorService
 
     public async Task EditAuthor(EditAuthorDTO editAuthorDTO)
     {
-        // Fetch the specific author with the given ID from the database
         var author = await _authorRepository.CheckAuthorForUpdate(editAuthorDTO);
 
         author.FirstName = editAuthorDTO.FirstName;

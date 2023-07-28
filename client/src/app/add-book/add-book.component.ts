@@ -33,14 +33,7 @@ export class AddBookComponent {
 
 
   onImageSelected(event: any) {
-    // const file = event.target.files[0];
-    // if (file) {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     this.book.Image = reader.result as string; // Update the property name to Image
-    //   };
-    //   reader.readAsDataURL(file);
-    // }
+
 
     const file = event.target.files[0];
     if (file) {
@@ -72,7 +65,6 @@ export class AddBookComponent {
     formData.append('LastName', this.book.LastName);
     formData.append('BirthDate', this.datePipe.transform(this.book.BirthDate, 'yyyy/MM/dd'));
 
-    // Convert the base64 string to a Blob object
     const byteCharacters = atob(this.book.Image);
     const byteArrays = [];
     for (let offset = 0; offset < byteCharacters.length; offset += 512) {
@@ -86,11 +78,8 @@ export class AddBookComponent {
     }
     const blob = new Blob(byteArrays, { type: 'image/jpeg' });
 
-    // Append the Blob object to the formData with the key 'imageFile'
     formData.append('imageFile', blob, 'image.jpg');
 
-    // Here, you can send the `formData` object to the API endpoint for creating the book.
-    // Make sure your API endpoint URL is correct based on your backend setup.
     this.http.post('https://localhost:44330/api/Books/add', formData).subscribe({
       next: (response) => {
         console.log('Book added successfully:', response);
@@ -100,7 +89,6 @@ export class AddBookComponent {
         console.error('Error adding book:', error);
       }
     });
-    // this.router.navigate(['/books']);
 
   }
 

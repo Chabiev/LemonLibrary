@@ -35,7 +35,6 @@ export class AddAuthorComponent implements OnInit{
     this.authorService.addAuthor(newAuthor).subscribe({
       next: (response) => {
         console.log('Author added successfully!', response);
-        // Reset the form after adding the author
         this.FirstName = '';
         this.LastName = '';
         this.BirthDate = null;

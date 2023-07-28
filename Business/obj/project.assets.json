@@ -6148,11 +6148,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj",
+      "projectUniqueName": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj",
       "projectName": "Business",
-      "projectPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\Business.csproj",
+      "projectPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\Business.csproj",
       "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Goga\\Desktop\\Lemondo\\LemonLibrary\\Business\\obj\\",
+      "outputPath": "C:\\Users\\Goga\\Desktop\\Lem archive\\LemonLibrary\\Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Goga\\AppData\\Roaming\\NuGet\\NuGet.Config",

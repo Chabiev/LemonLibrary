@@ -53,7 +53,6 @@ export class AuthorDetailComponent implements OnInit{
     this.authorService.updateAuthor(editedAuthor).subscribe({
       next: (response) => {
         console.log('Author updated successfully!', response);
-        // Reload the author details after saving changes
         this.getAuthorById(this.author.id);
       },
       error: (error) => {

@@ -28,7 +28,6 @@ public class UserService : IUserService
 
         if (existingUser != null)
         {
-            // Username already exists, return a bad request response indicating the duplicate username
             throw new ArgumentException("Username already exists.");
         }
 

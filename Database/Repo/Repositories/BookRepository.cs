@@ -89,12 +89,10 @@ public class BookRepository : IBookRepository
         }
         
         
-        // Update book properties from the EditBookDTO
         _mapper.Map(editBookDTO, book);
 
         if (editBookDTO.AuthorId.HasValue)
         {
-            // Update the existing book author if the author ID is specified
             var existingAuthor = await _context.Authors.FindAsync(editBookDTO.AuthorId.Value);
 
             if (existingAuthor == null)
@@ -114,7 +112,6 @@ public class BookRepository : IBookRepository
         }
         else
         {
-            // Create a new author if the author ID is not specified
             var newAuthor = new Author
             {
                 FirstName = editBookDTO.FirstName,
@@ -133,7 +130,6 @@ public class BookRepository : IBookRepository
             }
         }
 
-        // Handle the image update
         if (editBookDTO.ImageFile != null && editBookDTO.ImageFile.Length > 0)
         {
             using (var memoryStream = new MemoryStream())

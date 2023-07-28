@@ -19,7 +19,7 @@ public class BooksController : BaseApiController
         _booksService = booksService;
     }
     
-    //TODO: წიგნების სრული სიის წამოღება
+    // წიგნების სრული სიის წამოღება
     
     
     // GET: api/books
@@ -44,7 +44,7 @@ public class BooksController : BaseApiController
     }
     
     
-    //TODO: დეტალების წამოღება
+    // დეტალების წამოღება
     
     // GET: api/books/{id}
     [HttpGet("{id}")]
@@ -68,7 +68,7 @@ public class BooksController : BaseApiController
     
     
     
-    //TODO: წიგნის დამატება
+    // წიგნის დამატება
     
     // POST: api/books
         [HttpPost("add")]
@@ -92,7 +92,7 @@ public class BooksController : BaseApiController
         }
         
         
-    //TODO: წიგნის რედაქტირება
+    // წიგნის რედაქტირება
     
     [HttpPut("edit")]
     public async Task<IActionResult> UpdateBook([FromForm] EditBookDTO updatedBook)
@@ -113,7 +113,7 @@ public class BooksController : BaseApiController
         }
     }
     
-    //TODO: გატანა დაბრუნება
+    // გატანა დაბრუნება
     [HttpPut("{bookId}/toggle-status")]
     public async Task<IActionResult> ToggleBookStatus(int bookId)
     {
@@ -133,7 +133,7 @@ public class BooksController : BaseApiController
     }
     
     
-    //TODO: წაშლა
+    //წაშლა
     [HttpDelete("{bookId}")]
     public async Task<IActionResult> DeleteBookById(int bookId)
     {

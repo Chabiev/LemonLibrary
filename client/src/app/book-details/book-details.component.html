@@ -1,19 +1,15 @@
 <app-nav-bar></app-nav-bar>
 
 <div *ngIf="book" style="margin-top: 50px">
-  <!-- Container to center the content -->
   <div class="details-container">
-    <!-- Display the image -->
     <img [src]="book.imageUrl" class="card-img-top" alt="Book Image">
 
-    <!-- Display other book details -->
     <h2>{{ book.title }}</h2>
     <p>{{ book.description }}</p>
     <p>Rating: {{ book.rating }}</p>
     <p>Date Added: {{ book.dateAdded | date }}</p>
     <p>Currently: {{ book.available ? 'Available' : 'Not Available' }}</p>
 
-    <!-- Display authors -->
     <h3>Authors</h3>
     <ul>
       <li *ngFor="let author of book.authors">
